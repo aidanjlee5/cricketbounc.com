@@ -1,0 +1,78 @@
+% Load the data
+data = readtable('SmolData2.xlsx');
+
+% Extract data 
+dates = data.Date; 
+positiveCases = data.PCRPositiveCases; 
+reinfections = data.Reinfections; 
+deaths = data.Deaths; 
+
+% Total number of days
+time = 1:height(data);
+
+% Compute recovered cases as cumulative positive cases minus deaths
+cumulativeCases = cumsum(positiveCases - reinfections); %remove reinfected cases to only include new cases
+recovered = cumulativeCases - deaths;
+
+% Define total population (adjust this based on your data context)
+N = 1.05*1e7; % Example population size (replace with the actual value)
+
+% Initial conditions
+I0 = positiveCases(1) - reinfections(1); % Initial infected
+R0 = recovered(1); % Initial recovered
+S0 = N - I0 - R0; % Initial susceptible
+initialConditions = [S0, I0, R0];
+
+% Initial guess for [beta, gamma]
+initialGuess = [0.1, 0.05];
+
+% Define the SIR model as a function
+% Define the SIR model as a nested function
+    function dydt = sirModel(t, y, beta, gamma)
+        N = 1.05*1e7;
+        dydt = [-beta * y(1) * y(2) / N;  % dS/dt
+                 beta * y(1) * y(2) / N - gamma * y(2); % dI/dt
+                 gamma * y(2)]; % dR/dt
+    end
+
+% Wrapper function for ODE solver
+function Y = runSIR(beta, gamma, t, y0)
+    odeFunc = @(t, y) sirModel(t, y, beta, gamma);
+    [~, Y] = ode15s(odeFunc, t, y0); % Correctly return the second output (Y)
+end
+
+% Error function for optimization
+function err = errorFunc(params, time, initialConditions, positiveCases)
+    beta = params(1);
+    gamma = params(2);
+    % Simulate the SIR model
+    [~, Y] = ode15s(@(t, y) sirModel(t, y, beta, gamma), time, initialConditions);
+    % Compute the error as the difference between model-predicted and observed cases
+    err = sum((Y(:, 2) - positiveCases).^2);
+end
+
+% Optimization using fminsearch
+bestParams = fminsearch(@(params) errorFunc(params, time, initialConditions, positiveCases), initialGuess);
+
+% Extract beta and gamma
+beta = bestParams(1);
+gamma = bestParams(2);
+
+% Display results
+fprintf('Estimated Transmission Rate (beta): %.4f\n', beta);
+fprintf('Estimated Recovery Rate (gamma): %.4f\n', gamma);
+
+% Simulate the SIR model with the best-fit parameters
+[~, ySol] = ode15s(@(t, y) sirModel(t, y, beta, gamma), time, initialConditions);
+
+% Plot results
+figure;
+plot(time, ySol(:, 2), 'r', 'DisplayName', 'Model Infected');
+hold on;
+scatter(time, positiveCases, 'b', 'DisplayName', 'Actual Positive Cases');
+legend;
+xlabel('Time (days)');
+ylabel('Number of Cases');
+title('SIR Model Fit');
+grid on;
+

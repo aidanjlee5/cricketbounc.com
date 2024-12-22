@@ -1,0 +1,1542 @@
+/* Define the custom font */
+@font-face {
+  font-family: 'CustomFont';
+  src: url('../fonts/BOUNC4.ttf') format('truetype');
+}
+
+/* Apply the custom font to the body or specific elements */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'CustomFont', Arial, sans-serif;
+  height: 100%; 
+  overflow: hidden;
+}
+
+header {
+  background-color: #FFA500;
+  display: flex;
+  align-items: center; /* Align items vertically center */
+  justify-content: flex-start; /* Align items to the start */
+  padding: 10px 20px;
+  height: 100px; /* Set a fixed height for the header */
+  position: fixed; /* Fix the header to the top */
+  width: 100%; /* Ensure the header spans the full width */
+  top: 0; /* Fix the header to the top */
+  z-index: 1000; /* Ensure the header stays above other elements */
+}
+
+header img {
+  height: 180px; /* Increase the height to make the logo 1.5 times larger */
+  margin-right: 10px; /* Space between logo and title */
+  transform: translateY(10px); /* Shift logo down vertically */
+  /*transform: translateX(-40px); /* Shift logo down vertically */
+}
+
+header h1 {
+  font-size: 1.75em; /* Adjust the font size */
+  margin: 0; /* Remove default margin */
+  margin-right: 20px; /* Reduce space between title and navigation items */
+  white-space: nowrap; /* Prevent the title from wrapping to the next line */
+  transform: translateX(-20px);
+}
+
+header nav {
+  display: flex;
+  gap: 15px; /* Reduce gap between navigation items */
+  align-items: center; /* Align nav items vertically center */
+}
+
+header nav a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 1.25em; /* Increase font size */
+  align-items: center;
+  /*transform: translateY(10px); /* Shift logo down vertically */
+}
+
+header .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+header .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  margin-top: 10px; /* Keep the margin to maintain the space */
+  pointer-events: none; /* Initially disable pointer events */
+}
+
+header .dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+header .dropdown-content.about a {
+  background-color: rgb(161, 158, 158);
+  color: rgb(0, 0, 0);
+}
+
+header .dropdown-content.bcl a {
+  background-color: rgb(216, 110, 204);
+  color: rgb(7, 7, 7);
+}
+
+header .dropdown-content.burger-menu a {
+  background-color: rgb(253, 121, 121);
+  color: rgb(7, 7, 7);
+}
+
+header .dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+header .dropdown:hover .dropdown-content,
+header .dropdown-content:hover {
+  display: block;
+  pointer-events: auto; /* Enable pointer events when visible */
+}
+
+header .dropdown:hover::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 100%; /* Position it right below the dropdown */
+  left: 0;
+  width: 100%;
+  height: 10px; /* Height of the gap */
+  pointer-events: auto; /* Enable pointer events to keep it active */
+}
+
+header .dropdown-content:hover::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -10px; /* Position it right above the dropdown content */
+  left: 0;
+  width: 100%;
+  height: 10px; /* Height of the gap */
+  pointer-events: auto; /* Enable pointer events to keep it active */
+}
+
+header .dropdown:hover .dropdown-content.about a:hover {
+  background-color: rgb(80, 80, 80);
+}
+
+header .dropdown:hover .dropdown-content.bcl a:hover {
+  background-color: rgb(180, 80, 180);
+}
+
+header .dropdown:hover .dropdown-content.burger-menu a:hover {
+  background-color: rgb(252, 74, 74);
+}
+
+/* Ensuring dropdown is fully visible on the screen */
+header .dropdown-content.burger-menu {
+  right: -14; /* Changed to right to ensure the dropdown appears within the viewport */
+}
+
+main {
+  padding-top: 0px; /* Add padding to the top to avoid overlap with fixed header */
+  height: calc(120vh - 120px); /* Ensure full viewport height minus header height */
+  overflow-y: auto; /* Allow vertical scrolling */
+}
+
+.section {
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #000;
+  min-width: 100vw; /* Prevent sections from shrinking below viewport width */
+  box-sizing: border-box; /* Include padding and border in the element's width and height */
+}
+
+.section:nth-child(odd) {
+  background-color: #ADD8E6;
+}
+
+.section:nth-child(even) {
+  background-color: #90EE90;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-links div {
+  background-color: #FF6347;
+  padding: 10px;
+  margin: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Existing styles ... */
+
+.home-container {
+  text-align: center;
+  position: relative;
+  height: 460vh; /* Ensure the container takes at least the full height */
+  overflow: hidden; /* Prevent additional overflow */
+  padding-top: 10px; /* Remove any additional padding that might add white space */
+}
+
+.background-image {
+  width: 100%;
+  max-height: 100vh;
+  height: calc(100vh - 120px); /* Full viewport height minus header height */
+  background-size: cover;
+  background-position: center;
+  position: relative; /* Ensure the icons are positioned relative to this container */
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+
+h2 {
+  font-size: 2em;
+  padding-top: 120px;
+  margin-top: 30px;
+
+
+}
+
+/* New styles for the content below the background image */
+.content {
+  padding: 15px;
+  background-color: #f0f0f0;
+  flex-grow: 1;
+}
+
+.icon {
+  position: absolute;
+  /*width: 220px; Adjust size as necessary */
+  height: auto;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.noble-franklin-riders {
+  top: 5%;
+  left: 5%;
+  width: 220px;
+}
+
+.blazing-ramses {
+  top: 5%;
+  left: 25%;
+  width: 220px;
+}
+
+.bcl-trophy {
+  top: 5%;
+  left: 43%;
+  width: 220px;
+  /*transform: translate(-50%, -50%);*/
+}
+
+.tar-heel-trojans {
+  top: 4%;
+  right: 22%;
+  width: 270px;
+}
+
+.sixer-jordans {
+  top: 5%;
+  right: 7%;
+  width: 250px;
+}
+
+.sign {
+  bottom: 2%;
+  left: 6%;
+  width: 510px;
+}
+
+.icon:hover {
+  transform: scale(1.08);
+}
+
+/* Existing styles ... */
+
+.heel-life-container {
+  width: 100%;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.heel-life-image {
+  width: 96%;
+  height: auto;
+  padding-bottom: 17px;
+}
+
+.heel-life-icon {
+  position: absolute;
+  top: 43.5%;
+  left: 36%;
+  transform: translate(-50%, -50%);
+  width: 800px; /* Initial width of the icon */
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.heel-life-icon:hover {
+  transform: translate(-50%, -50%) scale(1.08); /* Only scale the icon on hover */
+}
+
+.content {
+  padding: 15px;
+  background-color: #f0f0f0;
+  flex-grow: 1;
+}
+
+
+/* Existing styles ... */
+
+.cricket-background-container {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.cricket-background-image {
+  width: 96%;
+  height: auto;
+}
+
+/* Styles for the icons on top of the Cricket Background */
+.cricket-icons {
+  position: absolute;
+  top: 6%;
+  left: 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px; /* Space between the icons */
+  z-index: 10; /* Ensure the icons are above the background image */
+}
+
+.cricket-icon {
+  width: 1350px;
+  height: auto;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.cricket-icon:hover {
+  transform: scale(1.05); /* Expand the icon on hover */
+}
+
+
+/* Specific positioning for each icon */
+.l-icon { top: 0px; }
+.f-icon { top: 30px; }
+.e-icon { top: 60px; }
+.c-icon { top: 90px; }
+
+/* Additional styles for the content below the background image */
+.content {
+  padding: 20px;
+  background-color: #f0f0f0;
+  flex-grow: 1;
+}
+
+
+Styles for About Page 
+.about-container {
+  text-align: center;
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.about-background {
+  width: 100%;
+  height: calc(100vh - 120px);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+/* Styles for BCL Page */
+.bcl-container {
+  text-align: center;
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.bcl-background {
+  width: 100%;
+  height: calc(100vh - 120px);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+/* Styles for Videos Page */
+.videos-container {
+  text-align: center;
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.videos-background {
+  width: 100%;
+  height: calc(100vh - 120px);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+/* Add styles for the title container */
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0px; /* Space between text and image */
+  margin-top: 20px; /* Ensure there is some margin from the top */
+}
+
+.title-container h2 {
+  margin: 40;
+}
+
+.title-logo {
+  height: 100px;
+  margin-top: 125px;
+  /*margin-left: 60px; /* Adjust margin to position the image beside the text */
+}
+
+/* Existing styles for team images */
+.team-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Space between images */
+  margin-bottom: 25px;
+}
+
+.team-image {
+  width: 100%;
+  max-width: 1400px; /* Ensure images do not exceed max width */
+  height: auto;
+  object-fit: contain; /* Ensure the image fits within the container */
+}
+
+.bcl-signup-container {
+  text-align: center;
+  margin: 20px 0; /* Adjust margin as needed */
+}
+
+.bcl-signup-link {
+  font-size: 1.9rem;
+  color: #000; /* Initial text color */
+  text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth scaling and color transition */
+  display: inline-block;
+}
+
+.bcl-signup-link:hover {
+  transform: scale(1.1); /* Slightly enlarge text on hover */
+  color: #007bff; /* Change color on hover */
+}
+
+
+/* Ensure hash link smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Additional styles for the footer */
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;  /* Add some padding on top */
+  text-align: center;
+  width: 100%;
+  flex-shrink: 0;
+  margin-top: 50px;  /* Space above the footer */ 
+}
+
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-grow: 1;
+  font-size: 1.4em;
+  padding-left: 10px;  /* Adjust padding for spacing */
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-links, .footer-signup {
+  flex-grow: 1;
+}
+
+.footer-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 2;  /* Adjusted to allow for more space in the center */
+  text-align: center;
+  padding: 0;
+}
+
+.footer-logo {
+  font-size: 2.2em;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.footer-logo:hover {
+  transform: scale(1.1); /* Expand link on hover */
+}
+
+.footer-img {
+  width: 170px;
+  display: block;
+  margin: 0 auto;
+}
+
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-center {
+  text-align: center;
+  flex-grow: 1;
+}
+
+/* Adjust alignment and styling for the footer-signup link */
+.footer-signup a {
+  color: #fff; /* Ensure the text color matches */
+  text-decoration: none;
+  font-size: 2.2em; /* Adjusted font size */
+  margin-bottom: 15px; /* Space between the link and the rights text */
+  margin-right: -60px;
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out; /* Smooth transition for scaling and color */
+}
+
+.footer-signup a:hover {
+  transform: scale(1.1); /* Expand link on hover */
+  color: #ffeb3b; /* Change the color on hover for better visibility */
+}
+
+/* Adjust alignment and spacing for the footer-rights text */
+.footer-signup .footer-rights {
+  font-size: 0.8em; /* Smaller font size */
+  color: #fff;      /* Ensure it matches the footer text color */
+  text-align: right; /* Align text to the right */
+}
+
+
+/* Adjust alignment and spacing for the footer-rights text */
+.footer-signup .footer-rights {
+  font-size: 1.0em; /* Smaller font size */
+  color: #fff;      /* Ensure it matches the footer text color */
+  text-align: right; /* Align text to the right */
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 5px 0;
+  font-size: 1.2em;
+  transition: transform 0.3s ease-in-out; /* Smooth transition for scaling */
+}
+
+.footer-links a:hover {
+  transform: scale(1.1); /* Expand link on hover */
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-links {
+    align-items: center;
+    padding-left: 0;
+  }
+
+  .footer-signup {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Align items to the right */
+    justify-content: flex-end;
+    padding-right: 0;
+  }
+}
+
+.cricket-rules-container {
+  text-align: center;
+  position: relative;
+  min-height: 100vh; /* Ensure the container takes up at least the full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; /* Distribute icons evenly */
+  padding-top: 0px;
+}
+
+.rules-background-image {
+  width: 100%;
+  height: auto; /* Adjust height based on content */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center icons vertically */
+  align-items: center; /* Center icons horizontally */
+}
+
+.rules-icon {
+  width: 100%; /* Take full width of the container */
+  max-width: 92%; /* Ensure it doesn't exceed 80% of the container's width */
+  height: auto;
+  margin: 20px 0; /* Reduce margin to prevent excessive space between icons */
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.rules-icon:hover {
+  transform: scale(1.05);
+}
+
+.cricket-wic {
+  width: 70%;
+  top: 5%;
+  left: 15%;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.cricket-wic:hover {
+  transform: scale(1.05);
+}
+
+.content {
+  padding: 0px;
+  background-color: #f0f0f0;
+  flex-grow: 1;
+}
+
+.cricket-rules-main {
+  display: flex;
+  flex-direction: column;
+  height: auto; /* Ensure the main takes up only the necessary height */
+}
+
+.cricket-rules-main p {
+  margin-top: 0; /* Remove any additional space above the paragraph */
+  margin-bottom: 25px; /* Adjust this value if you want more space below the paragraph */
+}
+
+.cricket-rules-container {
+  flex: 1; /* Ensures the container takes up remaining space above the footer */
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.socials-background-container {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.socials-background-image {
+  width: 96%;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.social-icons {
+  position: absolute;
+  top: 44%;
+  left: 6%;
+  display: flex;
+  gap: 20px; /* Space between the icons */
+  z-index: 10; /* Ensure the icons are above the background image */
+}
+
+.social-icon {
+  width: 260px; /* Adjust size as necessary */
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.social-icon:hover {
+  transform: scale(1.08); /* Expand the icon on hover */
+}
+
+.socials-background-image-2 {
+  width: 100%;
+  height: auto;
+}
+
+.follow-on-title {
+  font-size: 4em; /* Increase the font size */
+  text-align: center; /* Center align the text */
+  margin-top: 20px; /* Add some space above the text */
+  margin-bottom: 20px; /* Add some space below the text */
+  font-weight: bold; /* Make the text bold (optional) */
+}
+
+.ContactUs {
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh; /* Ensure the page takes up the full viewport height */
+}
+
+.contact-title {
+  font-size: 4em; /* Make the title larger */
+  margin-bottom: 20px;
+}
+
+.contact-background-container {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.contact-background-image {
+  width: 96%;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.contact-icon {
+  position: absolute;
+  top: 75%;
+  left: 6%;
+  width: 1300px; /* Adjust size as necessary */
+  height: auto;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.contact-icon:hover {
+  transform: scale(1.08); /* Expand the icon on hover */
+}
+
+/* Ensure footer stays at the bottom if page content is short */
+.ContactUs > *:nth-last-child(2) {
+  flex-grow: 1;
+}
+
+/* FAQ section styling */
+.FAQ {
+  margin: 20px;
+}
+
+.faq-item {
+  margin-bottom: 30px;
+}
+
+.question {
+  background-color: #f18785; /* Light red background for questions */
+  color: white; /* White text for questions */
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.225em;
+}
+
+.answer {
+  background-color: #ccffcc; /* Light green background for answers */
+  color: black; /* Black text for answers */
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+  font-size: 1.15em;
+}
+
+.cricket-rules-link {
+  font-weight: bold;
+  text-decoration: none;
+  color: #000; /* Black text color */
+  transition: transform 0.3s ease, color 0.3s ease;
+  font-size: 1.3em;
+}
+
+.cricket-rules-link:hover {
+  transform: scale(1.1); /* Expand on hover */
+  color: #007bff; /* Change color on hover */
+}
+
+.heel-life-link {
+  font-weight: bold;
+  text-decoration: none;
+  color: #000; /* Black text color */
+  transition: transform 0.3s ease, color 0.3s ease;
+  font-size: 1.3em;
+}
+
+.heel-life-link:hover {
+  transform: scale(1.1); /* Expand on hover */
+  color: #007bff; /* Change color on hover */
+}
+
+.email-link {
+  font-weight: bold;
+  text-decoration: none;
+  color: #000; /* Black text color */
+  transition: transform 0.3s ease, color 0.3s ease;
+  font-size: 1.3em;
+}
+
+.email-link:hover {
+  transform: scale(1.1); /* Expand on hover */
+  color: #007bff; /* Change color on hover */
+}
+
+.motives-title {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.motives-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px; /* Space between the images */
+  margin-bottom: 50px;
+}
+
+.motives-image {
+  width: 100%;
+  max-width: 1300px; /* Ensure images do not exceed max width */
+  transition: transform 0.3s ease;
+}
+
+.bcpb-image:hover {
+  transform: scale(1.06); /* Expand the image on hover */
+  cursor: pointer;
+}
+
+.constitution-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 120vh; /* Ensure the container takes up at least the full viewport height */
+  text-align: center;
+  padding: 20px;
+  background: none;
+}
+
+.constitution-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/foot.webp');
+  background-size: 50%; /* Adjust the size as needed */
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.7; /* Set the opacity for the background image */
+  z-index: -1; /* Ensure the background stays behind the content */
+}
+
+.constitution-container > *:nth-last-child(2) {
+  flex-grow: 1; /* Ensure the main content area takes up available space */
+}
+
+.constitution-link {
+  font-size: 3em;
+  color: black; /* Ensure the text is visible */
+  margin: 250px 0;
+  transition: transform 0.3s ease, color 0.3s ease;
+  z-index: 10; /* Ensure the text appears above the background */
+}
+
+.constitution-link-2 {
+  font-size: 3em;
+  color: black; /* Ensure the text is visible */
+  margin: -200px 0;
+  transition: transform 0.3s ease, color 0.3s ease;
+  z-index: 10; /* Ensure the text appears above the background */
+}
+
+.constitution-link a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.constitution-link-2 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.constitution-link:hover {
+  transform: scale(1.1);
+  color: #ffeb3b;
+  cursor: pointer;
+}
+
+.constitution-link-2:hover {
+  transform: scale(1.1);
+  color: #ffeb3b;
+  cursor: pointer;
+}
+
+.footer {
+  width: 100%; /* Ensure footer covers the full width */
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  position: relative;
+  z-index: 1; /* Ensure the footer stays on top of other content */
+  margin-top: auto; /* Add some space above the footer */
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Existing Gallery and Section Styles */
+.gallery-title {
+  text-align: center;
+  font-size: 3em;
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+.gallery-description {
+  text-align: center;
+  font-size: 1.1em;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 2em;
+  color: #000;
+  margin-bottom: 10px;
+  margin-top: 0px;
+}
+
+.section-underline {
+  border: 0;
+  height: 3px;
+  background-color: red;
+  margin-bottom: 20px; 
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Image grid and box styles */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  padding: 20px;
+}
+
+.image-box {
+  width: 200px; /* Equal width for all images */
+  height: auto;
+  border: 2px solid #000; /* Outline around the images */
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+/* Specific styles for the posters section */
+.posters-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  gap: 20px; /* Equal gap between grid cells */
+  justify-items: center;
+  padding: 0px;
+}
+
+.posters-grid .image-box {
+  height: 300px; /* Fixed height for poster images */
+  width: auto;
+  display: flex;
+  align-items: center; /* Vertically center the image */
+  justify-content: center; /* Horizontally center the image */
+  overflow: hidden; /* Ensure the image covers the full area */
+  margin: 0; /* Remove any margin to prevent additional spacing issues */
+}
+
+.posters-grid .image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the full area of the box without white borders */
+}
+
+.image-grid .image-box {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease-in-out; /* Smooth transition for scaling */
+}
+
+.image-grid .image-box:hover {
+  transform: scale(1.06); /* Scale image on hover */
+}
+
+.section-description {
+  text-align: center;
+  font-size: 1.2em;
+  color: #000;
+  margin: 20px 0;
+}
+
+/* Specific background color for the Cricket the Bug section */
+.section.cricket-the-bug {
+  background-color: #f3c4dd;
+}
+
+/* Specific background color for the Games & Events section */
+.section.games-and-events {
+  background-color: #E6E6FA; /* Light lavender */
+   /* Light grey */
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Ensure the Council page takes up the full viewport height */
+.Council {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh; /* Full height of the viewport */
+}
+
+.council-title {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 2.4em;
+  margin-bottom: 0px;
+}
+
+.council-description {
+  text-align: center;
+  font-size: 1.5em;
+  margin-top: 0px;
+  margin-top: 20px;
+}
+
+.council-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0px;
+  gap: 30px; /* Adjusted for even spacing between all images */
+}
+
+.council-image {
+  width: 100%;
+  max-width: 1450px; /* Ensure images have a consistent max width */
+  height: auto;
+}
+
+.council-image:first-child {
+  margin-bottom: -60; /* Remove the margin after the last image */
+}
+
+.council-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.4em;
+  color: #333;
+}
+
+/* Footer should be at the bottom of the page */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  width: 100%;
+  margin-top: auto; /* Push the footer to the bottom */
+}
+
+/* Styles for Support BOUNC section */
+.Supportbounc {
+  text-align: center;
+  padding: 20px;
+}
+
+.Supportbounc h2 {
+  font-size: 2.5em;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  color: #000000;
+}
+
+.support-description {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #1c1a1a;
+}
+
+.support-terms {
+  font-size: 1em;
+  color: #bbb;
+  margin-bottom: 20px;
+}
+
+.support-image {
+  width: 100%;
+  max-width: 1300px; /* Adjust the size as needed */
+  height: auto;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+
+.support-image:hover {
+  transform: scale(1.05); /* Slightly expand the image on hover */
+}
+
+/* Ensure the header is fixed at the top, as you already have */
+
+.signin-image-container {
+  margin-top: 170px; /* Offset by the height of the fixed header */
+  text-align: center;
+  display: flex;
+  justify-content: center; /* Center the image horizontally */
+  align-items: center; /* Center the image vertically within the container */
+}
+
+.signin-image {
+  width: 93%;
+  height: auto;
+  max-width: 1720px; /* Optional: set a max-width to constrain the image size */
+  display: block; /* Ensure the image takes full width and displays correctly */
+  max-height: calc(200vh - 120px); /* Prevent the image from overflowing the viewport height */
+}
+
+/* Adjust existing styles */
+.signin-image-container {
+  margin-top: 220px; /* Adjust based on your fixed header if any */
+  text-align: center;
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Ensure it takes full viewport height */
+}
+
+.signin-image {
+  width: 100%;
+  height: auto;
+  max-width: 1800px; /* Adjust this according to your image dimensions */
+  display: block;
+}
+
+.signup-form {
+  position: absolute;
+  top: 74%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.6); /* Slight transparency for better visibility */
+  padding: 20px;
+  border-radius: 10px;
+  width: 360px; /* Adjust the width of the form */
+}
+
+.signup-form label {
+  display: block;
+  font-size: 1.2em;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.signup-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.signup-form button {
+  padding: 10px 20px;
+  background-color: #d9534f;
+  font-family: 'CustomFont', Arial, sans-serif;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 45%; /* Ensures buttons are aligned */
+}
+
+.signup-form button:hover {
+  background-color: #c9302c;
+}
+
+.verification-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.verification-popup h2 {
+  margin-top: 0;
+}
+
+.verification-popup input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.verification-popup button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.verification-popup button:hover {
+  background-color: #c9302c;
+}
+
+.verification-popup .error {
+  color: red;
+  font-size: 0.9em;
+}
+
+/* styles.css */
+
+/* Add this CSS to ensure popups are correctly layered and positioned */
+.verification-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Adjusted so welcome popup appears above */
+}
+
+/* styles.css */
+
+.welcome-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1001; /* Ensure it appears above other content */
+  text-align: center;
+  width: 800px; /* Set a fixed width */
+  font-family: 'CustomFont', Arial, sans-serif;
+  font-size: 1.6em;
+}
+
+.welcome-popup h2 {
+  margin-bottom: 30px; /* Increase space below the header */
+  padding-top: 0px; /* Ensure no extra padding at the top */
+}
+
+.welcome-popup label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: 15px; /* Add some space above each label */
+}
+
+.welcome-popup input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-family: 'CustomFont', Arial, sans-serif;
+}
+
+.welcome-popup button {
+  padding: 10px 20px;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'CustomFont', Arial, sans-serif;
+}
+
+.welcome-popup button:hover {
+  background-color: #c9302c;
+}
+
+.welcome-popup .chosen-team {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.welcome-popup p {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.welcome-text {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 20px; /* Add space above the text to ensure it sits below the header */
+  color: #000; /* Ensure the text color is visible */
+  text-align: center;
+}
+
+.welcome-subtext {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #000; /* Ensure the text color is visible */
+  text-align: center;
+}
+
+.welcome-subtext {
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+
+.assigned-team-logo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 20px;
+  z-index: 10;
+}
+
+.gods-image {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.welcome-button {
+  padding: 10px 20px;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'CustomFont', Arial, sans-serif;
+}
+
+.welcome-button:hover {
+  background-color: #c9302c;
+}
+
+
+footer {
+  margin-top: 20px;
+  padding: 20px 0;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+}
+
+/* Add to your existing CSS */
+
+.team-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.team-icon img {
+  width: 200px;
+  height: auto;
+  z-index: 10;
+}
+
+.stats {
+  font-size: 1.5em;
+  color: #000;
+}
+
+/* Styles for Password Reset Component */
+.password-reset {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  text-align: center;
+  width: 400px;
+}
+
+.password-reset h2 {
+  margin-top: 0;
+  font-size: 1.5em;
+}
+
+.password-reset input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.password-reset button {
+  padding: 10px 20px;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.password-reset button:hover {
+  background-color: #c9302c;
+}
+
+/* Adjusting existing popups for consistency */
+
+.password-reset {
+  z-index: 1000;
+  width: 400px; /* Standardizing width across popups */
+}
+
+.password-reset button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  font-size: 1em;
+}
+
+/* Force landscape orientation on mobile devices and maintain site width */
+@media screen and (orientation: portrait) {
+  body {
+    transform: rotate(90deg);
+    transform-origin: left top;
+    width: 100vh; /* The height of the phone becomes the width of the site */
+    height: 100vw; /* The width of the phone becomes the height of the site */
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin: 0; /* Ensure no extra margins are added */
+    padding: 0;
+}
+}
+
+.hover-element:hover, 
+.hover-element.hovered {
+  transform: scale(1.1); /* Example hover effect */
+}
+

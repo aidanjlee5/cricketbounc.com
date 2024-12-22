@@ -1,0 +1,25 @@
+import React from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
+import Council from '../pages/Council';
+import Motives from '../pages/Motives';
+import Constitution from '../pages/Constitution';
+
+function About() {
+  return (
+    <div className="About">
+      <h2>About Us</h2>
+      <nav>
+        <Link to="council">The Council</Link>
+        <Link to="motives">Motives</Link>
+        <Link to="constitution">Constitution</Link>
+      </nav>
+      <Routes>
+        <Route path="council" element={<Council />} />
+        <Route path="motives" element={<Motives />} />
+        <Route path="constitution" element={<Constitution />} />
+      </Routes>
+    </div>
+  );
+}
+
+export default About;

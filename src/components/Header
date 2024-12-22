@@ -1,0 +1,12 @@
+import React from 'react';
+
+function Header() {
+  return (
+    <header className="Header">
+      <img src="logo.png" alt="BOUNC Logo" />
+      <h1>Bowlers & Batters at UNC-Chapel Hill</h1>
+    </header>
+  );
+}
+
+export default Header;

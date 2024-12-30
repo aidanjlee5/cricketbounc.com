@@ -66,7 +66,8 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Header isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+        {/* //Removed isLoggedIn={isLoggedIn} onLogout={handleLogout} */}
+        <Header/>
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Home isLoggedIn={isLoggedIn} />} />

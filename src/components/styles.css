@@ -1,3 +1,5 @@
+
+
 /* Define the custom font */
 @font-face {
   font-family: 'CustomFont';
@@ -11,7 +13,9 @@ body {
   font-family: 'CustomFont', Arial, sans-serif;
   height: 100%; 
   overflow: hidden;
+  --header-size:120px;
 }
+
 
 header {
   background-color: #FFA500;
@@ -145,7 +149,7 @@ header .dropdown-content.burger-menu {
 
 main {
   padding-top: 0px; /* Add padding to the top to avoid overlap with fixed header */
-  height: calc(120vh - 120px); /* Ensure full viewport height minus header height */
+  height: calc(120vh - var(--header-size)); /* Ensure full viewport height minus header height */
   overflow-y: auto; /* Allow vertical scrolling */
 }
 
@@ -184,31 +188,32 @@ main {
 /* Existing styles ... */
 
 .home-container {
-  text-align: center;
-  position: relative;
-  height: 460vh; /* Ensure the container takes at least the full height */
-  overflow: hidden; /* Prevent additional overflow */
-  padding-top: 10px; /* Remove any additional padding that might add white space */
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  overflow-x:hidden;
 }
 
-.background-image {
-  width: 100%;
+.panel{
+  width: 100%;  
   max-height: 100vh;
-  height: calc(100vh - 120px); /* Full viewport height minus header height */
+  height: calc(min(100vw,100vh - 120px)); /* Full viewport height minus header height */
   background-size: cover;
   background-position: center;
   position: relative; /* Ensure the icons are positioned relative to this container */
-  transition: transform 0.3s ease;
   cursor: pointer;
 }
 
 
 h2 {
   font-size: 2em;
-  padding-top: 120px;
-  margin-top: 30px;
-
-
+  margin:0px;
+  padding-bottom:0px;
+  padding-top:160px;
+  padding-bottom:0px;
+  margin-bottom:0px;
+  height:2em;
+  text-align:center;
 }
 
 /* New styles for the content below the background image */
@@ -219,74 +224,33 @@ h2 {
 }
 
 .icon {
-  position: absolute;
-  /*width: 220px; Adjust size as necessary */
   height: auto;
   transition: transform 0.3s ease;
   cursor: pointer;
 }
 
-.noble-franklin-riders {
-  top: 5%;
-  left: 5%;
-  width: 220px;
-}
 
-.blazing-ramses {
-  top: 5%;
-  left: 25%;
-  width: 220px;
-}
 
-.bcl-trophy {
-  top: 5%;
-  left: 43%;
-  width: 220px;
-  /*transform: translate(-50%, -50%);*/
-}
-
-.tar-heel-trojans {
-  top: 4%;
-  right: 22%;
-  width: 270px;
-}
-
-.sixer-jordans {
-  top: 5%;
-  right: 7%;
-  width: 250px;
-}
-
-.sign {
-  bottom: 2%;
+#sign {
+  position:absolute;
+  bottom: calc(max(2%,5vh));
   left: 6%;
-  width: 510px;
+  min-width:40%;
+  max-height:40%
+
 }
 
 .icon:hover {
   transform: scale(1.08);
 }
 
-/* Existing styles ... */
-
-.heel-life-container {
-  width: 100%;
-  margin-top: 15px;
-  cursor: pointer;
-}
-
-.heel-life-image {
-  width: 96%;
-  height: auto;
-  padding-bottom: 17px;
-}
 
 .heel-life-icon {
   position: absolute;
-  top: 43.5%;
+  top: 75.5%;
   left: 36%;
   transform: translate(-50%, -50%);
-  width: 800px; /* Initial width of the icon */
+  width: 55%;
   height: auto;
   transition: transform 0.3s ease;
 }
@@ -304,11 +268,6 @@ h2 {
 
 /* Existing styles ... */
 
-.cricket-background-container {
-  position: relative;
-  width: 100%;
-  margin-top: 20px;
-}
 
 .cricket-background-image {
   width: 96%;
@@ -351,8 +310,6 @@ h2 {
   flex-grow: 1;
 }
 
-
-Styles for About Page 
 .about-container {
   text-align: center;
   position: relative;
@@ -362,7 +319,7 @@ Styles for About Page
 
 .about-background {
   width: 100%;
-  height: calc(100vh - 120px);
+  height: calc(100vh - var(--header-size));
   background-size: cover;
   background-position: center;
   position: relative;
@@ -708,19 +665,9 @@ html {
   margin-bottom: 30px;
 }
 
-.social-icons {
-  position: absolute;
-  top: 44%;
-  left: 6%;
-  display: flex;
-  gap: 20px; /* Space between the icons */
-  z-index: 10; /* Ensure the icons are above the background image */
-}
+
 
 .social-icon {
-  width: 260px; /* Adjust size as necessary */
-  height: auto;
-  object-fit: contain;
   transition: transform 0.3s ease;
   cursor: pointer;
 }
@@ -1540,3 +1487,30 @@ footer {
   transform: scale(1.1); /* Example hover effect */
 }
 
+/* BELOW is for mobile */
+
+.team-icon-container{
+  display:flex;
+  flex-direction: row;
+  justify-content:space-around;
+  align-items:baseline;
+  width:100vw;
+  max-height:calc(min(100vw,100vh- 140px - 2em))
+}
+
+.team-icon-container img{
+  max-width:20%;
+  height:auto;
+  max-height:50%;
+}
+
+.social-icons{
+  display:flex;
+  flex-direction:row;
+
+}
+
+#heel-life{
+  width:100vw;
+  height:calc(min(max(100vw,100vh - var(--header-size)),100vw*500/900))
+}

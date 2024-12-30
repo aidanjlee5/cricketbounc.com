@@ -131,68 +131,64 @@ function Home({ isLoggedIn, userData }) {
         </div>
 
         {/* New Cricket Background Image with Icons */}
-        <div className=" panel" style={{"background-image":`url(${cricketbackground})`}} >
-          <div className="cricket-icons">
-            <img 
-              src={lIcon} 
-              alt="L Icon" 
-              className="cricket-icon l-icon" 
-              onClick={handleLClick}
-            />
-            <img 
-              src={fIcon} 
-              alt="F Icon" 
-              className="cricket-icon f-icon" 
-              onClick={handleFClick} 
-            />
-            <img 
-              src={eIcon} 
-              alt="E Icon" 
-              className="cricket-icon e-icon" 
-              onClick={handleEClick} 
-            />
-            <img 
-              src={cIcon} 
-              alt="C Icon" 
-              className="cricket-icon c-icon" 
-              onClick={handleCClick} 
-            />
-          </div>
+        <div className="panel" id="cricket-panel" style={{"background-image":`url(${cricketbackground})`}} >
+          <img 
+            src={lIcon} 
+            alt="L Icon" 
+            className="icon" 
+            onClick={handleLClick}
+          />
+          <img 
+            src={fIcon} 
+            alt="F Icon" 
+            className="icon" 
+            onClick={handleFClick} 
+          />
+          <img 
+            src={eIcon} 
+            alt="E Icon" 
+            className="icon" 
+            onClick={handleEClick} 
+          />
+          <img 
+            src={cIcon} 
+            alt="C Icon" 
+            className="icon" 
+            onClick={handleCClick} 
+          />
         </div>
 
-        <div className="socials-background-container panel" style = {{"background-image":`url(${socials})`}}>
-          <div className="social-icons">
-            <img 
-              src={tiktokIcon} 
-              alt="TikTok Icon" 
-              className="social-icon tiktok-icon" 
-              onClick={() => window.open('https://www.tiktok.com/@BOUNCE_UNCCH', '_blank')}
-            />
-            <img 
-              src={instagramIcon} 
-              alt="Instagram Icon" 
-              className="social-icon instagram-icon" 
-              onClick={() => window.open('https://www.instagram.com/cricketbounc/', '_blank')}
-            />
-            <img 
-              src={youtubeIcon} 
-              alt="YouTube Icon" 
-              className="social-icon youtube-icon" 
-              onClick={() => window.open('https://www.youtube.com/channel/UCY_pRAyhPu98hcduzQl6fqw', '_blank')}
-            />
-            <img 
-              src={facebookIcon} 
-              alt="Facebook Icon" 
-              className="social-icon facebook-icon" 
-              onClick={() => window.open('https://www.facebook.com/profile.php?id=61564215452432', '_blank')}
-            />
-            <img 
-              src={xIcon} 
-              alt="X Icon" 
-              className="social-icon x-icon" 
-              onClick={() => window.open('https://x.com/CricketBOUNC', '_blank')}
-            />
-          </div>
+        <div className="panel" id="social-panel" style = {{"background-image":`url(${socials})`}}>
+          <img 
+            src={tiktokIcon} 
+            alt="TikTok Icon" 
+            className="icon tiktok-icon" 
+            onClick={() => window.open('https://www.tiktok.com/@BOUNCE_UNCCH', '_blank')}
+          />
+          <img 
+            src={instagramIcon} 
+            alt="Instagram Icon" 
+            className="icon instagram-icon" 
+            onClick={() => window.open('https://www.instagram.com/cricketbounc/', '_blank')}
+          />
+          <img 
+            src={youtubeIcon} 
+            alt="YouTube Icon" 
+            className="icon youtube-icon" 
+            onClick={() => window.open('https://www.youtube.com/channel/UCY_pRAyhPu98hcduzQl6fqw', '_blank')}
+          />
+          <img 
+            src={facebookIcon} 
+            alt="Facebook Icon" 
+            className="icon facebook-icon" 
+            onClick={() => window.open('https://www.facebook.com/profile.php?id=61564215452432', '_blank')}
+          />
+          <img 
+            src={xIcon} 
+            alt="X Icon" 
+            className="icon x-icon" 
+            onClick={() => window.open('https://x.com/CricketBOUNC', '_blank')}
+          />
         </div>
 
         {isLoggedIn && (

@@ -197,13 +197,11 @@ main {
 .panel{
   width: 100%;  
   max-height: 100vh;
-  height: calc(min(100vw,100vh - 120px)); /* Full viewport height minus header height */
+  height: calc(min(100vw,100vh - var(--header-size)));
   background-size: cover;
   background-position: center;
-  position: relative; /* Ensure the icons are positioned relative to this container */
-  cursor: pointer;
+  position: relative;
 }
-
 
 h2 {
   font-size: 2em;
@@ -275,33 +273,12 @@ h2 {
 }
 
 /* Styles for the icons on top of the Cricket Background */
-.cricket-icons {
-  position: absolute;
-  top: 6%;
-  left: 5%;
-  display: flex;
-  flex-direction: column;
-  gap: 32px; /* Space between the icons */
-  z-index: 10; /* Ensure the icons are above the background image */
-}
 
-.cricket-icon {
-  width: 1350px;
-  height: auto;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
 
 .cricket-icon:hover {
   transform: scale(1.05); /* Expand the icon on hover */
 }
 
-
-/* Specific positioning for each icon */
-.l-icon { top: 0px; }
-.f-icon { top: 30px; }
-.e-icon { top: 60px; }
-.c-icon { top: 90px; }
 
 /* Additional styles for the content below the background image */
 .content {
@@ -557,7 +534,7 @@ html {
   transform: scale(1.1); /* Expand link on hover */
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .footer-container {
     flex-direction: column;
     align-items: center;
@@ -572,11 +549,11 @@ html {
     justify-content: center;
     display: flex;
     flex-direction: column;
-    align-items: flex-end; /* Align items to the right */
+    align-items: flex-end; 
     justify-content: flex-end;
     padding-right: 0;
   }
-}
+} */
 
 .cricket-rules-container {
   text-align: center;
@@ -653,11 +630,6 @@ html {
   width: 100%;
 }
 
-.socials-background-container {
-  position: relative;
-  width: 100%;
-  margin-top: 20px;
-}
 
 .socials-background-image {
   width: 96%;
@@ -667,10 +639,6 @@ html {
 
 
 
-.social-icon {
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
 
 .social-icon:hover {
   transform: scale(1.08); /* Expand the icon on hover */
@@ -1504,13 +1472,25 @@ footer {
   max-height:50%;
 }
 
-.social-icons{
-  display:flex;
-  flex-direction:row;
-
-}
-
 #heel-life{
   width:100vw;
   height:calc(min(max(100vw,100vh - var(--header-size)),100vw*500/900))
 }
+
+#social-panel{
+  display:flex;
+  flex-direction:row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#social-panel *{
+  max-width:18%;
+}
+
+#cricket-panel{
+  display:flex;
+  flex-direction:column;
+  justify-content: space-around;
+}
+

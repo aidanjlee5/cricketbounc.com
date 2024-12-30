@@ -91,7 +91,7 @@ function App() {
               <Route path="supportbounc" element={<Supportbounc />} />
               </Route>
             <Route path="/password-reset" element={<PasswordReset />} /> {/* New PasswordReset Route */}
-            <Route path="*" element={<Home isLoggedIn={isLoggedIn} />} /> {/* Fallback route */}
+            {/* <Route path="*" element={<Home isLoggedIn={isLoggedIn} />} /> Fallback route */}
           </Routes>
         </main>
       </Router>
